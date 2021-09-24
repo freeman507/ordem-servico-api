@@ -5,9 +5,12 @@ import br.com.felipezanella.repository.ExameRepository;
 import br.com.felipezanella.repository.MedicoRepository;
 import br.com.felipezanella.repository.PacienteRepository;
 import br.com.felipezanella.repository.PostoColetaRepository;
+import io.quarkus.runtime.StartupEvent;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @ApplicationScoped
@@ -24,6 +27,11 @@ public class MigrationService {
 
     @Inject
     PacienteRepository pacienteRepository;
+
+    @Transactional
+    void onStart(@Observes StartupEvent ev) {
+        migration();
+    }
 
     public void migration() {
         exames();
