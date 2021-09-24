@@ -1,8 +1,8 @@
 package br.com.felipezanella.resource;
 
 import br.com.felipezanella.exception.RecursoNaoEncontradoException;
-import br.com.felipezanella.model.Exame;
-import br.com.felipezanella.service.ExameService;
+import br.com.felipezanella.model.Medico;
+import br.com.felipezanella.service.MedicoService;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -12,22 +12,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/exames")
+@Path("medicos")
 @Produces(MediaType.APPLICATION_JSON)
-public class ExameResource {
+public class MedicoResource {
 
     @Inject
-    private ExameService exameService;
+    MedicoService medicoService;
 
     @GET
-    public List<Exame> findAll() {
-        return exameService.findAll();
+    public List<Medico> findAll() {
+        return medicoService.findAll();
     }
 
     @GET
     @Path("/{id}")
-    public Exame findById(@PathParam("id") Long id) throws RecursoNaoEncontradoException {
-        return exameService.findById(id);
+    public Medico findById(@PathParam("id") Long id) throws RecursoNaoEncontradoException {
+        return medicoService.findById(id);
     }
-
 }

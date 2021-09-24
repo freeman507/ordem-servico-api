@@ -1,6 +1,6 @@
 package br.com.felipezanella.service;
 
-import br.com.felipezanella.exception.ExameNaoEncontradoException;
+import br.com.felipezanella.exception.RecursoNaoEncontradoException;
 import br.com.felipezanella.model.Exame;
 import br.com.felipezanella.repository.ExameRepository;
 
@@ -18,7 +18,7 @@ public class ExameService {
         return exameRepository.findAll().list();
     }
 
-    public Exame findById(Long id) throws ExameNaoEncontradoException {
-        return exameRepository.findByIdOptional(id).orElseThrow(ExameNaoEncontradoException::new);
+    public Exame findById(Long id) throws RecursoNaoEncontradoException {
+        return exameRepository.findByIdOptional(id).orElseThrow(RecursoNaoEncontradoException::new);
     }
 }
