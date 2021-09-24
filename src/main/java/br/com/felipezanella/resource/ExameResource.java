@@ -17,7 +17,7 @@ import java.util.List;
 public class ExameResource {
 
     @Inject
-    private ExameService exameService;
+    ExameService exameService;
 
     @GET
     public List<Exame> findAll() {
